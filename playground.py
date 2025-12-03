@@ -1,7 +1,7 @@
 import streamlit as st  #Streamlit 불러오기
 import io  #입출력 시스템 불러오기
 import contextlib  #글자를 한번에 출력되지 않고 저장할 수 있게 해주는 redirect_stdout을 사용할 수 있도록 불러오기
-import html  #웹과 관련된 도구들을 불러오기기
+import html  #웹과 관련된 도구들을 불러오기
 
 #변수들이 없을 경우 그 변수들의 초기값 설정(한 번 정해진 후엔 실행 X)(일반 변수와 다르게 페이지를 이동해도 유지됨)
 if "code1" not in st.session_state:
@@ -67,7 +67,7 @@ def r_click():
     st.session_state["r_type"] = "primary"
     st.session_state["code_page"] = 2
 
-st.title("연습 공간")  #연습공간이라는 제목을 띄우기기
+st.title("연습 공간")  #연습공간이라는 제목을 띄우기
 
 st.markdown("""
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap" rel="stylesheet">
@@ -82,7 +82,7 @@ div.stMarkdown > pre, div.stMarkdown > code {
     font-size: 20px !important;
 }
 </style>
-""", unsafe_allow_html=True)  #코딩에 맞는 글꼴 구글에서 불러오기기
+""", unsafe_allow_html=True)  #코딩에 맞는 글꼴 구글에서 불러오기
 
 st.markdown("""
 <style>
@@ -90,7 +90,7 @@ div[data-testid="stButton"] button {
     width: 100% !important;
 }
 </style>
-""", unsafe_allow_html=True)  #앞으로 나올 버튼이 가로로 꽉 차게 해주는 코드
+""", unsafe_allow_html=True)  #앞으로 나올 버튼이 가로로 꽉 차게 해주는 코드(였지만 잘 실행 안됨)
 
 l,m,r=st.columns(3)
 with l:
@@ -98,7 +98,7 @@ with l:
 with m:
     st.button("코드 2",type=st.session_state["m_type"],on_click=m_click)  #가운데 버튼
 with r:
-    st.button("코드 3",type=st.session_state["r_type"],on_click=r_click)  #오른른쪽 버튼
+    st.button("코드 3",type=st.session_state["r_type"],on_click=r_click)  #오른쪽 버튼
 
 user_code = st.text_area("Python 코드를 입력하세요:", height=400, key='special_text',placeholder="코드를 입력하세요...")  #코드 입력 받고 user_code에 저장
 
@@ -116,4 +116,5 @@ if st.button("실행"):  #실행할 때
         st.code(buffer.getvalue(), language=None)  #코드 실행 결과를 나타냄
 
     except Exception as e: #에러가 난다면
+
         st.error(f"에러 발생 : {e}")  #에러 발생이라는 문구와 함께 무슨 에러인지 출력
